@@ -1,0 +1,35 @@
+#server.port=8080
+#mybatis.mapper-locations=classpath:mappers/*xml
+#mybatis.type-aliases-package=cn.hwz.learn.sharingjdbc.mybatis.domain
+#
+## springJdbc??aringjdbc\u5B98\u7F51
+#spring.shardingsphere.datasource.names=ds0,ds1
+## ??????
+#spring.shardingsphere.datasource.ds1.type = com.zaxxer.hikari.HikariDataSource
+#spring.shardingsphere.datasource.ds1.driver-class-name=org.mariadb.jdbc.Driver
+#spring.shardingsphere.datasource.ds1.username=root
+#spring.shardingsphere.datasource.ds1.password=root
+#spring.shardingsphere.datasource.ds1.url=jdbc:mariadb://192.168.244.130:3306/learn_demo?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useCursorFetch=true&autoReconnect=true&useLocalSessionState=true
+## ??????
+#spring.shardingsphere.datasource.ds0.type = com.zaxxer.hikari.HikariDataSource
+#spring.shardingsphere.datasource.ds0.driver-class-name=org.mariadb.jdbc.Driver
+#spring.shardingsphere.datasource.ds0.username=root
+#spring.shardingsphere.datasource.ds0.password=root
+#spring.shardingsphere.datasource.ds0.url=jdbc:mariadb://192.168.244.129:3306/learn_demo?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useCursorFetch=true&autoReconnect=true&useLocalSessionState=true
+#
+## ????????????database-xxxx??????????????????????
+#spring.shardingsphere.rules.sharding.sharding-algorithms.database-inline.type=INLINE
+## ??????2????????
+#spring.shardingsphere.rules.sharding.sharding-algorithms.database-inline.props.algorithm-expression=ds$->{id%2}
+## ???????????
+#spring.shardingsphere.rules.sharding.tables.sharingJdbc.key-generate-strategy.column=id
+## ??????
+#spring.shardingsphere.rules.sharding.tables.sharingJdbc.database-strategy.standard.sharding-column=id
+#spring.shardingsphere.rules.sharding.tables.sharingJdbc.database-strategy.standard.sharding-algorithm-name=database-inline
+## ????,?????????snowflake???????type?props??????
+#spring.shardingsphere.sharding.default-key-generate-strategy.xxx=snowflake
+#spring.shardingsphere.rules.sharding.key-generators.snowflake.type=SNOWFLAKE
+## ??id??
+#spring.shardingsphere.rules.sharding.key-generators.snowflake.props.worker-id=7
+#spring.shardingsphere.props.sql-show=true
+#
